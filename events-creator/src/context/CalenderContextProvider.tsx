@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import {
   calculateMonthLength,
   calculatePrevMonthLength,
@@ -9,7 +9,8 @@ import {
 } from "../services/date-utils";
 
 export const CalenderContext = createContext<any>(null);
-const CalenderProvider = ({ children }: any) => {
+
+const CalenderContextProvider = ({ children }: any) => {
   const currDate = new Date();
   const month = currDate.toLocaleString("default", { month: "long" });
   const year = currDate.getFullYear();
@@ -34,7 +35,6 @@ const CalenderProvider = ({ children }: any) => {
     setFirstDay(firstDay);
     const lastDay = lastDayOfMonth(date);
     setLastDay(lastDay);
-
     setDaysInMonth(generateDays(currMonthLength));
     const daysInPrevMonth = generateDaysPrevMonth(prevMonthLength, firstDay);
     setDaysInPrevMonth(daysInPrevMonth);
@@ -42,8 +42,8 @@ const CalenderProvider = ({ children }: any) => {
     setDaysInNextMonth(daysInNextMonth);
   }, [date]);
   return (
-    <CalenderProvider
-      vale={{
+    <CalenderContext.Provider
+      value={{
         currDate,
         month,
         year,
@@ -62,8 +62,10 @@ const CalenderProvider = ({ children }: any) => {
         firstDay,
         lastDay,
       }}
-    ></CalenderProvider>
+    >
+      {children}
+    </CalenderContext.Provider>
   );
 };
 
-export default CalenderProvider;
+export default CalenderContextProvider;

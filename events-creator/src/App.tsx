@@ -1,17 +1,15 @@
-import { useState } from "react";
 import "./App.css";
-import CalenderProvider from "./context/CalenderProvider";
+import CalenderContextProvider from "./context/CalenderContextProvider";
 import DaysContainer from "./containers/DaysContainer/DaysContainer";
+import Header from "./components/Header/Header";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
-      <CalenderProvider>
-        {console.log("loading")}
+      <CalenderContextProvider>
+        <Header />
         <DaysContainer />
-      </CalenderProvider>
+      </CalenderContextProvider>
     </>
   );
 }

@@ -29,6 +29,13 @@ export const lastDayOfMonth = (date: Date): number => {
 export const getCurrentDay = (date: Date, day: number): number => {
   return new Date(date.getFullYear(), date.getMonth(), day).getDay();
 };
+export const getOtherMonth = (date: Date, day: number): number => {
+  return new Date(
+    date.getFullYear(),
+    day > 7 ? date.getMonth() - 1 : date.getMonth() + 1,
+    day
+  ).getDay();
+};
 
 export const getDate = (date: Date, day: number) => {
   return new Date(date.getFullYear(), date.getMonth(), day);
@@ -36,7 +43,7 @@ export const getDate = (date: Date, day: number) => {
 
 export const generateDays = (num: number): number[] => {
   const days = [];
-  for (let i = 1; i < num; i++) {
+  for (let i = 1; i <= num; i++) {
     days.push(i);
   }
   return days;
@@ -46,7 +53,10 @@ export const generateDaysPrevMonth = (
   lengthOfMonth: number
 ): number[] => {
   const days = [];
-  for (let i = lastDay; i < lastDay - lengthOfMonth; i--) {
+  if (lengthOfMonth === 0) {
+    return [];
+  }
+  for (let i = lastDay; i > lastDay - lengthOfMonth; i--) {
     days.unshift(i);
   }
   return days;
