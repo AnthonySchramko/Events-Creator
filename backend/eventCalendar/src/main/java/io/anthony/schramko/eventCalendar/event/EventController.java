@@ -1,4 +1,4 @@
-package event;
+package io.anthony.schramko.eventCalendar.event;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import exceptions.NotFoundException;
+import exceptions.ValidationException;
 import jakarta.validation.Valid;
 
 @RestController
@@ -54,14 +55,19 @@ public class EventController {
 		throw new NotFoundException(String.format("Event with id: %d does not exist. Unable to delete event",id));
 	}
 	@PatchMapping("/{id}")
-	public ResponseEntity<Event> updateById(@PathVariable Long id, @Valid @RequestBody EventUpdateDTO data){
-		Optional<Event> updated = this.eventService.updateById(id,data);
-		
-		if(updated.isPresent()) {
-			return new ResponseEntity<Event>(updated.get(), HttpStatus.OK);
+	public ResponseEntity<?> updateById(@PathVariable Long id, @Valid @RequestBody EventUpdateDTO data){
+		try {
+			Optional<Event> updated = this.eventService.updateById(id,data);
+			
+			if(updated.isPresent()) {
+				return new ResponseEntity<Event>(updated.get(), HttpStatus.OK);
+			}
+			
+			throw new NotFoundException(String.format("Event with id: %d does not exist. Unable to update", id));
+		} catch(ValidationException e) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
 		}
 		
-		throw new NotFoundException(String.format("Event with id: %d does not exist. Unable to update", id));
 	}
 	
 }

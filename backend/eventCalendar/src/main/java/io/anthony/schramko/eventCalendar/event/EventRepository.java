@@ -1,4 +1,4 @@
-package event;
+package io.anthony.schramko.eventCalendar.event;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

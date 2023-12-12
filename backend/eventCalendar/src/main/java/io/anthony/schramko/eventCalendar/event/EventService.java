@@ -1,5 +1,7 @@
-package event;
+package io.anthony.schramko.eventCalendar.event;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -8,6 +10,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import exceptions.ValidationException;
 import jakarta.transaction.Transactional;
 
 @Service
@@ -48,6 +51,37 @@ public class EventService {
 		
 		if(foundEvent.isPresent()) {
 			Event toUpdate = foundEvent.get();
+			
+			
+			if(data.getStartDate() != null) {
+				LocalDate existingEndDate = toUpdate.getEndDate();
+				if(data.getStartDate().isAfter(existingEndDate)) {
+					throw new ValidationException("Start date must be same as or before the end date");
+				}
+			}
+			
+			if(data.getStartTime() != null) {
+				LocalTime existingEndTime = toUpdate.getEndTime();
+				if(data.getStartTime().isAfter(existingEndTime)) {
+					throw new ValidationException("Start time must be before the end time");
+				}
+			}
+			
+			if(data.getEndDate()!=null ) {
+				LocalDate existingStartDate = toUpdate.getStartDate();
+				
+				
+				if(data.getEndDate().isBefore(existingStartDate)) {
+					throw new ValidationException("End date must be same as or after the start date");
+				}
+				
+			}
+			if(data.getEndTime()!=null) {
+				LocalTime existingStartTime = toUpdate.getStartTime();
+				if(data.getEndTime().isBefore(existingStartTime)) {
+					throw new ValidationException("End time must be after the start time");
+				}
+			}
 			modelMapper.map(data, toUpdate);
 			
 			Event updatedEvent = this.eventRepository.save(toUpdate);

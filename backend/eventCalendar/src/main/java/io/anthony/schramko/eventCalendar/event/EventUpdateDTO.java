@@ -1,9 +1,18 @@
-package event;
+package io.anthony.schramko.eventCalendar.event;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Getter;
 import lombok.Setter;
 
+
+
 public class EventUpdateDTO {
+	
+	
 	@Getter
 	@Setter
 	
@@ -16,23 +25,23 @@ public class EventUpdateDTO {
 	
 	@Getter
 	@Setter
-	
-	private String startDate;
-	
-	@Getter
-	@Setter
-	
-	private String startTime;
+	 @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate startDate;
 	
 	@Getter
 	@Setter
-	
-	private String endDate;
+	@DateTimeFormat(pattern = "HH:mm")
+    private LocalTime startTime;
 	
 	@Getter
 	@Setter
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate endDate;
 	
-	private String endTime;
+	@Getter
+	@Setter
+	@DateTimeFormat(pattern = "HH:mm")
+    private LocalTime endTime;
 	
 	@Getter
 	@Setter
