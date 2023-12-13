@@ -6,16 +6,23 @@ import Day from "../../components/Day/Day";
 import OtherMonth from "../../components/OtherMonth/OtherMonth";
 
 const DaysContainer = () => {
-  const { daysInMonth, daysInPrevMonth, daysInNextMonth, showModal, dayNames } =
-    useContext(CalenderContext);
+  const {
+    daysInMonth,
+    daysInPrevMonth,
+    daysInNextMonth,
+    showModal,
+    dayNames,
+    setShowEvents,
+  } = useContext(CalenderContext);
 
   const [modalClass, setModalClass] = useState<string>();
   const [calenderContainer, setCalenderContainer] = useState<string>();
 
   useEffect(() => {
     if (showModal) {
+      setShowEvents(true);
       setModalClass(styles.modal_shown);
-      setCalenderContainer(styles.calender_container_unfocussed);
+      setCalenderContainer(styles.calender_container_unfocused);
     } else {
       setModalClass(styles.modal);
       setCalenderContainer(styles.calender_container);

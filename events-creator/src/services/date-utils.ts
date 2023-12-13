@@ -61,3 +61,23 @@ export const generateDaysPrevMonth = (
   }
   return days;
 };
+
+export const compareDates = (
+  date: Date,
+  startDate: string,
+  endDate: string
+): boolean => {
+  let trimmedDate = trimDate(date);
+  if (new Date(startDate) <= trimmedDate && trimmedDate <= new Date(endDate)) {
+    return true;
+  }
+  return false;
+};
+
+export const convertDateToString = (date: Date): string => {
+  return date.toLocaleDateString("en-GB");
+};
+
+export const trimDate = (date: Date): Date => {
+  return new Date(date.toISOString().substring(0, 10));
+};

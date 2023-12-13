@@ -1,9 +1,12 @@
-import React from "react";
 import styles from "./EventModal.module.scss";
+import EventContainer from "../../containers/EventContainer/EventContainer";
+import CreateEvent from "../CreateEvent/CreateEvent";
+import EventList from "../EventList/EventList";
 const EventModal = () => {
   return (
     <div className={styles.container}>
-      <h2>Event modal</h2>
+      <EventContainer />
+      <CreateEvent />
     </div>
   );
 };

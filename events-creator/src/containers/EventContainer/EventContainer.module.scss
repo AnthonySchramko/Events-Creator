@@ -1,0 +1,21 @@
+.modal {
+  display: none;
+}
+.modal_shown {
+  display: block;
+}
+.date {
+  text-align: center;
+  font-size: 15px;
+  margin-bottom: 1vh;
+}
+.container {
+  padding: 20px;
+  border: 2px solid black;
+}
+.btn {
+  position: absolute;
+  bottom: 0px;
+  left: 20px;
+  color: white;
+}

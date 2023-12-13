@@ -5,21 +5,13 @@ import { eventSchema } from "../../validation/form-validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { eventUtils } from "../../services/event-utils";
 import EventForm from "../EventForm/EventForm";
-import styles from "./CreateEvent.module.scss";
-const CreateEvent = () => {
-  const {
-    date,
-    makeEventModal,
-    setMakeEventModal,
-    setShowEvents,
-    noOfEvents,
-    setNoOfEvents,
-  } = useContext(CalenderContext);
-
-  const [modalClass, setModalClass] = useState<string>("");
-
+import styles from "./UpdateEvent.module.scss";
+const UpdateEvent = () => {
+  const { date, setShowEvents, showCurrEvent, setShowCurrEvent, currEvent } =
+    useContext(CalenderContext);
+  const [modalClass, setModalClass] = useState<string>();
   useEffect(() => {
-    if (makeEventModal) {
+    if (showCurrEvent) {
       setModalClass(styles.modal_shown);
     } else {
       setModalClass(styles.modal);
@@ -45,20 +37,17 @@ const CreateEvent = () => {
   });
 
   const formSubmit = (data: Event) => {
-    const newEvent = { ...data, id: noOfEvents };
     eventUtils
-      .createEvent(newEvent)
-      .then(() => {
-        setNoOfEvents(noOfEvents + 1);
-        setMakeEventModal(false);
-        setShowEvents(true);
-      })
+      .updateEventById(currEvent.id, data)
+      .then(() => {})
       .catch((e) => console.log(e));
+    setShowCurrEvent(false);
+    setShowEvents(true);
   };
   const handleCancel = (e: any) => {
     e.preventDefault();
     reset();
-    setMakeEventModal(false);
+    setShowCurrEvent(false);
     setShowEvents(true);
   };
   return (
@@ -73,4 +62,4 @@ const CreateEvent = () => {
     </div>
   );
 };
-export default CreateEvent;
+export default UpdateEvent;
