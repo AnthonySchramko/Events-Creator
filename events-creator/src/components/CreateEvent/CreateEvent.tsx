@@ -45,9 +45,8 @@ const CreateEvent = () => {
   });
 
   const formSubmit = (data: Event) => {
-    const newEvent = { ...data, id: noOfEvents };
     eventUtils
-      .createEvent(newEvent)
+      .createEvent(data)
       .then(() => {
         setNoOfEvents(noOfEvents + 1);
         setMakeEventModal(false);

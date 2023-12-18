@@ -5,7 +5,6 @@ import Details from "../Details/Details";
 
 const EventList = () => {
   const { currentEvents } = useContext(CalenderContext);
-  console.log("currentEvents", currentEvents);
   return (
     <div className={styles.container}>
       {currentEvents &&

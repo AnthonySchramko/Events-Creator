@@ -10,14 +10,8 @@ export interface DayProps {
   day: number;
 }
 const Day = ({ day }: DayProps) => {
-  const {
-    date,
-    setDate,
-    setShowModal,
-    setCurrentEvents,
-    events,
-    currentEvents,
-  } = useContext(CalenderContext);
+  const { date, setDate, setShowModal, setCurrentEvents, events } =
+    useContext(CalenderContext);
   let container = styles.container;
   if (getCurrentDay(date, day) === 0 || getCurrentDay(date, day) === 6) {
     container += ` ${styles.weekend}`;
@@ -40,15 +34,13 @@ const Day = ({ day }: DayProps) => {
     const newDate = getDate(date, day);
     setDate(newDate);
     setShowModal(true);
-    console.log(currentDayEvents);
     setCurrentEvents(currentDayEvents);
-    console.log("settingCurrentEvents", currentEvents);
   };
 
   return (
     <div onClick={handleClick} className={container}>
       <div className={styles.day}>{day}</div>
-      <div className={styles.event_container} key={1}>
+      <div className={styles.event_container}>
         {currentDayEvents &&
           currentDayEvents.map((event: Event) => {
             return (

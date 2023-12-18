@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CalenderContext, Event } from "../../context/CalenderContextProvider";
 import { compareDates, convertDateToString } from "../../services/date-utils";
 import styles from "./EventContainer.module.scss";
@@ -28,7 +28,6 @@ const EventContainer = () => {
     const eventsOnDate = events?.filter((e: Event) => {
       return compareDates(date, e.startDate, e.endDate);
     });
-    console.log("eventsOnDate", eventsOnDate);
     setCurrentEvents(eventsOnDate);
   };
   const [modalClass, setModalClass] = useState<string>("");
@@ -46,10 +45,11 @@ const EventContainer = () => {
     <div className={modalClass}>
       <div className={styles.date}>{convertDateToString(date)}</div>
       <EventList />
-      <p onClick={handleNewEvent}>Open</p>
-      {/* <img src="" alt="" className={styles.img} onClick={handleNewEvent} /> */}
+      <button onClick={handleNewEvent} className={styles.create}>
+        Create Event
+      </button>
       <button onClick={handleModalClose} className={styles.btn}>
-        Close
+        X
       </button>
     </div>
   );

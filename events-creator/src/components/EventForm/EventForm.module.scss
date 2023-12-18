@@ -46,14 +46,20 @@
   margin: 0px 5px;
 }
 .btn_submit {
-  margin: 15px;
+  border: none;
+  text-decoration: none;
+  color: white;
+  background-color: rgba(26, 115, 232, 1);
 }
 .btn_close {
-  margin: 15px;
+  border: none;
+  text-decoration: none;
+  color: white;
+  background-color: rgba(26, 115, 232, 1);
 }
 .btn_container {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 .error {
   color: red;

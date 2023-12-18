@@ -8,12 +8,12 @@ import {
   lastDayOfMonth,
 } from "../services/date-utils";
 import { eventUtils } from "../services/event-utils";
-
 export const CalenderContext = createContext<any>(null);
 export interface Event {
   id: number;
   title: string;
   details: string;
+  createdAt: string;
   startDate: string;
   startTime: string;
   endDate: string;

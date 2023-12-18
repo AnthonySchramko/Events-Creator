@@ -20,6 +20,7 @@ const UpdateEvent = () => {
   const {
     register,
     handleSubmit,
+    setValue,
     reset,
     formState: { errors },
   } = useForm({
@@ -29,11 +30,12 @@ const UpdateEvent = () => {
       details: "",
       category: "",
       location: "",
-      startDate: date,
+      startDate: "",
       startTime: "",
-      endDate: date,
+      endDate: "",
       endTime: "",
     },
+    values: currEvent,
   });
 
   const formSubmit = (data: Event) => {
@@ -50,6 +52,7 @@ const UpdateEvent = () => {
     setShowCurrEvent(false);
     setShowEvents(true);
   };
+
   return (
     <div className={modalClass}>
       <EventForm

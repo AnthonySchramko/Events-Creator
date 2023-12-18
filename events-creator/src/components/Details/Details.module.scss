@@ -4,20 +4,32 @@
 .event {
   display: block;
   cursor: pointer;
-  border: 1px solid black;
   width: 350px;
-  background-color: rgba(0, 255, 255, 0.096);
+  background-color: #33b679;
+  color: white;
+  border-radius: 8px;
 }
 .time {
+  padding-left: 10px;
   font-size: 15px;
   width: 50px;
   text-align: center;
 }
 .text {
+  text-align: center;
   font-size: 25px;
   width: 350px;
 }
 .delete {
-  height: 25px;
-  width: 60px;
+  position: absolute;
+  top: 40px;
+  right: 20px;
+  border: none;
+  text-decoration: none;
+  color: grey;
+  background-color: #33b679;
+}
+.date {
+  text-align: center;
+  padding-left: 10px;
 }
