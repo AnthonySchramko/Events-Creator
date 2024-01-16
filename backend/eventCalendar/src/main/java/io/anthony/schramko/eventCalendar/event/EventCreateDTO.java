@@ -13,7 +13,7 @@ import lombok.Setter;
 
 
 public class EventCreateDTO {
-
+	
     @Getter
     @Setter
     @NotBlank(message = "Title cannot be blank")
@@ -27,7 +27,7 @@ public class EventCreateDTO {
     @Getter
     @Setter
     @NotNull(message = "Must have a start date")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-mm-dd")
     private LocalDate startDate;
 
     @Getter
@@ -39,7 +39,7 @@ public class EventCreateDTO {
     @Getter
     @Setter
     @NotNull(message = "Must have an end date")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-mm-dd")
     private LocalDate endDate;
 
     @Getter

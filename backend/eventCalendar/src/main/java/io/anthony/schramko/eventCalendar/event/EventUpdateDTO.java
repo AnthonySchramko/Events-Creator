@@ -25,7 +25,7 @@ public class EventUpdateDTO {
 	
 	@Getter
 	@Setter
-	 @DateTimeFormat(pattern = "yyyy-MM-dd")
+	 @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate startDate;
 	
 	@Getter
@@ -35,7 +35,7 @@ public class EventUpdateDTO {
 	
 	@Getter
 	@Setter
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate endDate;
 	
 	@Getter

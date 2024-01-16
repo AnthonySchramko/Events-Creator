@@ -28,12 +28,14 @@ public class EventController {
 	@GetMapping
 	public ResponseEntity<List<Event>> getAll(){
 		List<Event> allEvents = this.eventService.getAll();
+		
 		return new ResponseEntity<>(allEvents,HttpStatus.OK);
 	}
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Event> getById(@PathVariable Long id){
 		Optional<Event> found = this.eventService.getById(id);
+		
 		if(found.isPresent()) {
 			return new ResponseEntity<Event>(found.get(),HttpStatus.OK);
 		}

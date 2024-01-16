@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { CalenderContext, Event } from "../../context/CalenderContextProvider";
 import { eventUtils } from "../../services/event-utils";
 import styles from "./Details.module.scss";
-import UpdateEvent from "../UpdateEvent/UpdateEvent";
 export interface DetailsProps {
   e: Event;
   index: number;
@@ -13,7 +12,6 @@ const Details = ({ e, index }: DetailsProps) => {
     setNoOfEvents,
     setCurrEvent,
     setShowCurrEvent,
-    showCurrEvent,
     setShowEvents,
   } = useContext(CalenderContext);
   const handleShowEventDetails = () => {

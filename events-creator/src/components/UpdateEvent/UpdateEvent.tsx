@@ -7,7 +7,7 @@ import { eventUtils } from "../../services/event-utils";
 import EventForm from "../EventForm/EventForm";
 import styles from "./UpdateEvent.module.scss";
 const UpdateEvent = () => {
-  const { date, setShowEvents, showCurrEvent, setShowCurrEvent, currEvent } =
+  const { setShowEvents, showCurrEvent, setShowCurrEvent, currEvent } =
     useContext(CalenderContext);
   const [modalClass, setModalClass] = useState<string>();
   useEffect(() => {
@@ -20,7 +20,6 @@ const UpdateEvent = () => {
   const {
     register,
     handleSubmit,
-    setValue,
     reset,
     formState: { errors },
   } = useForm({

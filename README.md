@@ -4,78 +4,103 @@
 
 ## Demo & Snippets
 
-- Include hosted link
-- Include images of app if CLI or Client App
+### Home Page:
+
+![Home_Page](images/landing-page.PNG)
+![Home_Page_with_event](images/landing-page2.PNG)
+
+### Selected Day:
+
+![Selected_Day](images/day.PNG)
+![Selected_Day_with_event](images/day2.PNG)
+
+### Event Form:
+
+## ![Event_Form](images/form.PNG)
 
 ---
 
 ## Requirements / Purpose
 
-- MVP
-- purpose of project
-- stack used and why
+### MVP:
+
+- Create a page that displays a calendar. The calendar should include a title showing the current month and a grid of days (Please note that you DO NOT have to use css grid to style it).
+
+- Each of the days cells should be clickable.
+- When a user click on a chosen day, a modal should appear
+  The user should be able to navigate between months - view the upcoming month, previous month etc.
+- The user should be able to do the following:
+
+  - Create a new event
+  - Update an existing future event
+  - Delete an event
+  - Retrieve all events from the database
+  - Retrieve a single event from the database
+  - All data coming from the user should be validated.
 
 ---
 
 ## Build Steps
 
-- how to build / run project
-- use proper code snippets if there are any commands to run
+1. Clone project first:
+
+```bash
+git clone git@github.com:AnthonySchramko/Events-Creator.git
+```
+
+### Backend
+
+Import backend into a Java IDE, such as Eclipse, and run the App.java
+
+### Frontend
+
+Path to directory
+
+```bash
+cd Events-Creator/events-creator
+```
+
+Install dependencies
+
+```bash
+npm install
+```
+
+Start the server
+
+```bash
+npm run dev
+```
+
+### Database
+
+Create a database in MySQL and call it 'events_calendar'
 
 ---
 
 ## Design Goals / Approach
 
-- Design goals
-- why did you implement this the way you did?
+- This website was made with the aim to allow users to plan out their days with a simple event calendar. The user can select a day, and create an event that with a start and end date/time along with any details required.
+- It was made with a simplistic design, similar to Google Calendar month view. This is relatively simplistic yet aesthetic, showing all the days in a square (including days from other months).
 
 ---
 
 ## Features
 
-- What features does the project have?
-- list them...
+- The user can click through each month, and select specific days. Events show up under the day if created.
+- If a day is selected, the user can either edit or remove existing events or create a new event.
 
 ---
 
 ## Known issues
 
-- Remaining bugs, things that have been left unfixed
-- Features that are buggy / flimsy
+- Due to time/date conversions, occasionally event can show up on wrong day.
+- End date sometimes doesn't update when event made.
 
 ---
 
 ## Future Goals
 
-- What are the immediate features you'd add given more time
+- Add labels which generate different coloured events and a filter for the labels
 
 ---
-
-## Change logs
-
-- Write a paragraph labelled with the date every day you work on the project to discuss what you've done for the say. Be specific about the changes that have happened for that day.
-
-### 13/02/2022 - {Theme of changes if applicable}
-
-- Extended the expiry time of JWT tokens on the backend
-- Added users to cohort response payload
-- Centralized API base URL on frontend using the proxy `package.json` property
-
----
-
-## What did you struggle with?
-
-- What? Why? How?
-
----
-
-## Licensing Details
-
-- What type of license are you releasing this under?
-
----
-
-## Further details, related projects, reimplementations
-
-- Is this project a reimplementation for something you've done in the past? if so explain it and link it here.
-- If it's an API, is there a client app that works with this project? link it

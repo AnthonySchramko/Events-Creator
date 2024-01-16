@@ -20,6 +20,7 @@ import lombok.Setter;
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Getter
     private Long id;
 
     @Column
@@ -40,7 +41,7 @@ public class Event {
     @Column
     @Getter
     @Setter
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate startDate;
 
     @Column
@@ -52,7 +53,7 @@ public class Event {
     @Column
     @Getter
     @Setter
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate endDate;
 
     @Column
@@ -73,8 +74,9 @@ public class Event {
 
     public Event() {}
 
-    public Event(String title, String details, Date createdAt, LocalDate startDate, LocalTime startTime, LocalDate endDate, LocalTime endTime, String category, String location) {
-        this.title = title;
+    public Event(Long id, String title, String details, Date createdAt, LocalDate startDate, LocalTime startTime, LocalDate endDate, LocalTime endTime, String category, String location) {
+    	this.id= id;
+    	this.title = title;
         this.details = details;
         this.createdAt = createdAt;
         this.startDate = startDate;

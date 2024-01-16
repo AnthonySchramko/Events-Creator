@@ -69,8 +69,6 @@ public class EventService {
 			
 			if(data.getEndDate()!=null ) {
 				LocalDate existingStartDate = toUpdate.getStartDate();
-				
-				
 				if(data.getEndDate().isBefore(existingStartDate)) {
 					throw new ValidationException("End date must be same as or after the start date");
 				}
@@ -83,7 +81,6 @@ public class EventService {
 				}
 			}
 			modelMapper.map(data, toUpdate);
-			
 			Event updatedEvent = this.eventRepository.save(toUpdate);
 			
 			return Optional.of(updatedEvent);
